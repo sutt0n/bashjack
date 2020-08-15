@@ -23,3 +23,5 @@ erl_crash.dump
 bashjack-*.tar
 
 bashjack
+
+.elixir_ls
