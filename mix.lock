@@ -1,4 +1,0 @@
-%{
-  "dep_from_hexpm": {:hex, :dep_from_hexpm, "0.3.0", "e820a753364b715e84457836317107c340d3bdcaa21b469272da79f29ef5f5cb", [:mix], [], "hexpm", "55b0c9db6c5666a4358e1d8e799f43f3fa091ef036dc0d09bf5ee9f091f07b6d"},
-  "ex_prompt": {:hex, :ex_prompt, "0.1.5", "b136642d0962f8ea37b3c9fa185ad1f42c71c3b9c6c3950f0358d7f3d2db2970", [:mix], [], "hexpm", "ad19a404708c9c7b05d36090b2d074ceafbed248a8de1a22d45a05ebe6994b83"},
-}
