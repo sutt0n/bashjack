@@ -8,3 +8,9 @@ For now, it's just two simple steps:
 
 - `mix escript.build`
 - `./bashjack`
+
+## Tests
+
+To run unit tests:
+
+- `mix test`
