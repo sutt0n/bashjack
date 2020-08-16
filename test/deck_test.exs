@@ -12,12 +12,11 @@ defmodule DeckTest do
     second_card = Enum.at(deck, 1)
     third_card = Enum.at(deck, 2)
     fourth_card = Enum.at(deck, 3)
+    sorted_cards = [first_card, second_card, third_card, fourth_card]
 
     # check consecutive card values
     # e.g. elem({"2", "S"}, 0) -> {"2"}
-    assert elem(first_card, 0) === elem(second_card, 0)
-    assert elem(second_card, 0) === elem(third_card, 0)
-    assert elem(third_card, 0) === elem(fourth_card, 0)
+    assert sorted_cards === [{"2", "♠"}, {"2", "♥"}, {"2", "♦"}, {"2", "♣"}]
 
     # shuffle
     shuffled_deck = Deck.shuffle_deck(deck)
@@ -25,16 +24,15 @@ defmodule DeckTest do
     second_card = Enum.at(shuffled_deck, 1)
     third_card = Enum.at(shuffled_deck, 2)
     fourth_card = Enum.at(shuffled_deck, 3)
+    shuffled_cards = [first_card, second_card, third_card, fourth_card]
 
     # shuffled deck shouldn't technically have 3 consecutive cards with same values
-    assert elem(first_card, 0) !== elem(second_card, 0)
-    assert elem(second_card, 0) !== elem(third_card, 0)
-    assert elem(third_card, 0) !== elem(fourth_card, 0)
+    assert shuffled_cards !== sorted_cards
   end
 
   test "deals a card from an unshuffled deck" do
     deck = Deck.create_deck()
-    [card1, deck] = Deck.deal(deck)
+    [card1, _] = Deck.deal(deck)
 
     # will always be {"2", "♠"} if unshuffled
     assert card1 === {"2", "♠"}
@@ -42,7 +40,7 @@ defmodule DeckTest do
 
   test "deals two cards from an unshuffled deck" do
     deck = Deck.create_deck()
-    [hand, deck] = Deck.deal_two(deck)
+    [hand, _] = Deck.deal_two(deck)
 
     # will always be [{"2", "♠"}, {"2", "♥"}] if unshuffled
     assert hand === [{"2", "♠"}, {"2", "♥"}]
