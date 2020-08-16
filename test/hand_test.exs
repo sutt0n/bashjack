@@ -9,4 +9,13 @@ defmodule HandTest do
     assert Hand.is_face_card({"A", ""}) === false
     assert Hand.is_face_card({"10", ""}) === false
   end
+
+  test "sums the card values in the hand" do
+    assert Hand.sum_value([{"2", "♠"}, {"2", "♥"}, {"2", "♦"}, {"2", "♣"}]) === 8
+    assert Hand.sum_value([{"A", "♠"}, {"K", "♥"}]) === 21
+    assert Hand.sum_value([{"A", "♠"}, {"9", "♥"}]) === 20
+    assert Hand.sum_value([{"2", "♥"}, {"10", "♥"}, {"A", "♠"}]) === 13
+    assert Hand.sum_value([{"10", "♠"}, {"2", "♥"}, {"10", "♥"}]) === 22
+    assert Hand.sum_value(Deck.create_deck()) === 340
+  end
 end

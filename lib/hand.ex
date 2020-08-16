@@ -3,7 +3,7 @@ defmodule Hand do
 
   def sum_value([], acc), do: acc
 
-  def sum_value([head | tail], acc) do
+  def sum_value([head | tail], acc \\ 0) do
     face_card = Hand.is_face_card(head)
 
     case head do
