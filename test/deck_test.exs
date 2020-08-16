@@ -8,23 +8,14 @@ defmodule DeckTest do
 
   test "shuffles a deck of cards" do
     deck = Deck.create_deck()
-    first_card = hd(deck)
-    second_card = Enum.at(deck, 1)
-    third_card = Enum.at(deck, 2)
-    fourth_card = Enum.at(deck, 3)
-    sorted_cards = [first_card, second_card, third_card, fourth_card]
+    sorted_cards = deck |> Enum.slice(0, 4)
 
     # check consecutive card values
     # e.g. elem({"2", "S"}, 0) -> {"2"}
     assert sorted_cards === [{"2", "♠"}, {"2", "♥"}, {"2", "♦"}, {"2", "♣"}]
 
     # shuffle
-    shuffled_deck = Deck.shuffle_deck(deck)
-    first_card = hd(shuffled_deck)
-    second_card = Enum.at(shuffled_deck, 1)
-    third_card = Enum.at(shuffled_deck, 2)
-    fourth_card = Enum.at(shuffled_deck, 3)
-    shuffled_cards = [first_card, second_card, third_card, fourth_card]
+    shuffled_cards = Deck.create_deck() |> Deck.shuffle_deck() |> Enum.slice(0, 4)
 
     # shuffled deck shouldn't technically have 3 consecutive cards with same values
     assert shuffled_cards !== sorted_cards
