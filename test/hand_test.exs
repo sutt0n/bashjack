@@ -14,8 +14,13 @@ defmodule HandTest do
     assert Hand.sum_value([{"2", "♠"}, {"2", "♥"}, {"2", "♦"}, {"2", "♣"}]) === 8
     assert Hand.sum_value([{"A", "♠"}, {"K", "♥"}]) === 21
     assert Hand.sum_value([{"A", "♠"}, {"9", "♥"}]) === 20
-    assert Hand.sum_value([{"2", "♥"}, {"10", "♥"}, {"A", "♠"}]) === 13
     assert Hand.sum_value([{"10", "♠"}, {"2", "♥"}, {"10", "♥"}]) === 22
     assert Hand.sum_value(Deck.create_deck()) === 340
+
+    # this is why we check for folded from right and left
+    assert Hand.sum_value([{"2", "♥"}, {"10", "♥"}, {"A", "♠"}]) === 13
+
+    # on List.foldl, this comes out as 23 (List.foldr for the above statement)
+    assert Hand.sum_value([{"A", "♠"}, {"2", "♥"}, {"10", "♥"}]) === 13
   end
 end

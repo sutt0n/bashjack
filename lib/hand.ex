@@ -1,23 +1,21 @@
 defmodule Hand do
   def is_face_card({value, _}), do: String.contains?("JQK", value)
 
-  def sum_value([], acc), do: acc
+  def card_value(card, acc) do
+    face_card = Hand.is_face_card(card)
 
-  def sum_value([head | tail], acc \\ 0) do
-    face_card = Hand.is_face_card(head)
-
-    case head do
-      {"A", _} when acc > 10 ->
-        Hand.sum_value(tail, 1 + acc)
-
-      {"A", _} when acc <= 10 ->
-        Hand.sum_value(tail, 11 + acc)
-
-      _ when face_card ->
-        Hand.sum_value(tail, 10 + acc)
-
-      _ ->
-        Hand.sum_value(tail, String.to_integer(elem(head, 0)) + acc)
+    case card do
+      {"A", _} when acc > 10 -> 1
+      {"A", _} when acc <= 10 -> 11
+      _ when face_card -> 10
+      _ -> card |> elem(0) |> String.to_integer()
     end
+  end
+
+  def sum_value(hand) do
+    left = List.foldl(hand, 0, fn card, acc -> Hand.card_value(card, acc) + acc end)
+    right = List.foldr(hand, 0, fn card, acc -> Hand.card_value(card, acc) + acc end)
+
+    min(left, right)
   end
 end
