@@ -14,10 +14,7 @@ defmodule DeckTest do
     # e.g. elem({"2", "S"}, 0) -> {"2"}
     assert sorted_cards === [{"2", "♠"}, {"2", "♥"}, {"2", "♦"}, {"2", "♣"}]
 
-    # shuffle
     shuffled_cards = Deck.create_deck() |> Deck.shuffle_deck() |> Enum.slice(0, 4)
-
-    # shuffled deck shouldn't technically have 3 consecutive cards with same values
     assert shuffled_cards !== sorted_cards
   end
 
