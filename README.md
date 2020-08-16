@@ -1,21 +1,10 @@
 # Bashjack
 
-**TODO: Add description**
+This is mainly a learning experience for myself, because I wanted to learn a functional programming language. 🤷‍♂️
 
-## Installation
+## Running
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `bashjack` to your list of dependencies in `mix.exs`:
+For now, it's just two simple steps:
 
-```elixir
-def deps do
-  [
-    {:bashjack, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/bashjack](https://hexdocs.pm/bashjack).
-
+- `mix escript.build`
+- `./bashjack`
