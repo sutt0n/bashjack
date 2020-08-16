@@ -1,6 +1,6 @@
 defmodule BashjackTest do
   use ExUnit.Case
-  doctest Bashjack.CLI
+  doctest Bashjack
 
   # test "greets the world" do
   #   assert Bashjack.hello() == :world
