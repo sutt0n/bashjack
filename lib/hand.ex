@@ -18,4 +18,10 @@ defmodule Hand do
 
     min(left, right)
   end
+
+  def print_hand(hand) do
+    for card <- hand do
+      IO.puts("#{card |> elem(0)}#{card |> elem(1)}")
+    end
+  end
 end
