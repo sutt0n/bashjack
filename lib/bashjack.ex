@@ -26,6 +26,14 @@ defmodule Bashjack do
       is_integer when init_action === 2 ->
         IO.puts("\nConnecting... (TODO)")
 
+        address =
+          IO.gets("\nEnter the lobby address and port (e.g. 127.0.0.1:7331): ")
+          |> String.trim_trailing()
+
+        host = Client.get_addr(address)
+        port = Client.get_port(address)
+        Client.send_data("A new player has joined.", host, port)
+
       is_integer when init_action === 3 ->
         Server.launch_server()
 
